@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class JournalController {
         this.journalService = journalService;
     }
     @PostMapping
+    @RolesAllowed({"user"})
     public ResponseEntity<?> createNewPost(@RequestBody JournalRequest request) throws IOException {
         JournalResponse responseDto = journalService.createNewPost(request);
 
@@ -30,6 +32,7 @@ public class JournalController {
     }
 
     @GetMapping("/all")
+    @RolesAllowed({"user"})
     public ResponseEntity<?> getAllPost() {
         List<JournalResponse> responseDto = journalService.getAllPosts();
 
@@ -39,6 +42,7 @@ public class JournalController {
     }
 
     @GetMapping("/{id}")
+    @RolesAllowed({"user"})
     public ResponseEntity<?> getPostById(@PathVariable String id) {
         JournalResponse responseDto = journalService.getPost(id);
 
@@ -48,6 +52,7 @@ public class JournalController {
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed({"user", "superadmin"})
     public ResponseEntity<?> updatePost(@PathVariable String id, @RequestBody JournalRequest request) throws IOException {
         JournalResponse responseDto = journalService.updatePost(id, request);
 

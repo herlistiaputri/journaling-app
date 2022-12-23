@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,7 @@ public class UserController {
     }
 
     @PostMapping
+    @RolesAllowed({"user","superadmin"})
     public ResponseEntity<?> createUser(@RequestBody UserRequest request) {
         UserResponse userResponse = userService.createUser(request);
         BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);
@@ -29,6 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
+    @RolesAllowed({"user","superadmin"})
     public ResponseEntity<?> getUser(@PathVariable String userId) {
         UserResponse userResponse = userService.getUser(userId);
         BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);
@@ -36,6 +39,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
+    @RolesAllowed({"user","superadmin"})
     public ResponseEntity<?> getUpdateUser(@PathVariable String userId, @RequestBody UserRequest request) {
         UserResponse userResponse = userService.updateUser(userId, request);
         BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);

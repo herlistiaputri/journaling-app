@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class PicturesController {
     }
 
     @GetMapping("/{journalId}")
+    @RolesAllowed({"user"})
     public ResponseEntity<?> getPictures(@PathVariable String journalId) {
         List<PictureResponse> responses = pictureService.getPictures(journalId);
         BaseResponse<List<PictureResponse>> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, responses);
@@ -27,6 +29,7 @@ public class PicturesController {
     }
 
     @GetMapping("/{pictureId}")
+    @RolesAllowed({"user"})
     public ResponseEntity<?> getPicture(@PathVariable String pictureId) {
         PictureResponse responseDto = pictureService.getPicture(pictureId);
         BaseResponse<PictureResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, responseDto);

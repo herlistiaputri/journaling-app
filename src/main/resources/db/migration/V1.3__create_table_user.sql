@@ -1,6 +1,6 @@
 Create table t_user
 (
-    user_id varchar,
+    user_id varchar primary key ,
     name varchar,
     email varchar,
     password text,
