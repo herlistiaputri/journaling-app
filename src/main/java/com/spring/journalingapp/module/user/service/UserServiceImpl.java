@@ -7,9 +7,11 @@ import com.spring.journalingapp.module.user.model.User;
 import com.spring.journalingapp.module.user.model.UserRequest;
 import com.spring.journalingapp.module.user.model.UserResponse;
 import com.spring.journalingapp.module.user.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service

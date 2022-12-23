@@ -2,10 +2,10 @@ package com.spring.journalingapp.module.journal.model;
 
 import com.spring.journalingapp.core.BaseModel;
 import com.spring.journalingapp.module.pictures.model.Picture;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Entity

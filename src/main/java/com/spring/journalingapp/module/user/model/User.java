@@ -1,8 +1,7 @@
 package com.spring.journalingapp.module.user.model;
 
-import javax.persistence.*;
-
 import com.spring.journalingapp.core.BaseModel;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 

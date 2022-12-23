@@ -2,11 +2,10 @@ package com.spring.journalingapp.module.pictures.model;
 
 import com.spring.journalingapp.core.BaseModel;
 import com.spring.journalingapp.module.journal.model.Journal;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "t_pictures")
@@ -30,7 +29,6 @@ public class Picture extends BaseModel<String> {
     
     @Column(name = "file")
     @Lob
-    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] file;
 
     @ManyToOne
