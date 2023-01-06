@@ -11,4 +11,6 @@ public interface UserService {
 
     UserResponse updateUser(String id, UserRequest request);
 
+    UserResponse getProfile();
+
 }

@@ -20,7 +20,7 @@ public class JournalController {
     public JournalController(JournalService journalService) {
         this.journalService = journalService;
     }
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<?> createNewPost(@RequestBody JournalRequest request) throws IOException {
         JournalResponse responseDto = journalService.createNewPost(request);
 

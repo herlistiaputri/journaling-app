@@ -21,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<?> createUser(@RequestBody UserRequest request) {
         UserResponse userResponse = userService.createUser(request);
         BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);
@@ -38,6 +38,13 @@ public class UserController {
     @PutMapping("/{userId}")
     public ResponseEntity<?> getUpdateUser(@PathVariable String userId, @RequestBody UserRequest request) {
         UserResponse userResponse = userService.updateUser(userId, request);
+        BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/current")
+    public ResponseEntity<?> getCurrentUser() {
+        UserResponse userResponse = userService.getProfile();
         BaseResponse<UserResponse> response = new BaseResponse<>(String.valueOf(HttpStatus.OK.value()), "SUCCESS", null, userResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

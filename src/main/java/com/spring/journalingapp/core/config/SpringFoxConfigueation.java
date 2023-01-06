@@ -25,7 +25,7 @@ public class SpringFoxConfigueation {
         return new ApiInfoBuilder()
                 .title("Journaling API")
                 .description("Documentation Journaling API")
-                .version("1.0")
+                .version("2.0")
                 .build();
     }
 }
